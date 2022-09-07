@@ -3,12 +3,12 @@ title: "BEE 4750/5750 Homework 1"
 author: "Anne Potter (ap674)"
 date: `j import Dates; Dates.Date(Dates.now())`
 weave_options:
-	term: true
-	cache: off
-	md2pdf:
-		template: "bee4750pdf.tpl"
-	md2html:
-		template: "bee4750html.tpl"
+    term: true
+    cache: off
+    md2pdf:
+        template: "bee4750pdf.tpl"
+    md2html:
+        template: "bee4750html.tpl"
 ---
 
 <!-- This setups the environment and installs packages, but doesn't appear in the generated document -->
@@ -41,12 +41,12 @@ graphplot(A, names=names, markersize=0.15, markershapes=shapes, markercolor=:whi
 
 ## Problem 1.2
 ```math
-c_1 = x_1^2/20
-e_1 = 0.80
-c_2 = 1.5*x_2
-e_2 = 1-0.005*x_2
-x_1 + x_2 = 100
-(e_1 + e_2) / 2 = 0.80
+c_1 = x_1^2/20;
+e_1 = 0.80;
+c_2 = 1.5*x_2;
+e_2 = 1-0.005*x_2;
+x_1 + x_2 = 100;
+(e_1 + e_2) / 2 = 0.80;
 ```
 
 ## Problem 1.3
