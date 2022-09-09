@@ -38,16 +38,23 @@ ypos = [1, 0, 0, -1]
 
 graphplot(A, names=names, markersize=0.15, markershapes=shapes, markercolor=:white, x=xpos, y=ypos)
 ```
+![Alternate Text]("C:\\Users\\annie\\Documents\\hw1-bee4750")
 
 ## Problem 1.2
 ```math
-c_1 = x_1^2/20;
-e_1 = 0.80;
-c_2 = 1.5*x_2;
-e_2 = 1-0.005*x_2;
-x_1 + x_2 = 100;
-(e_1 + e_2) / 2 = 0.80;
+c_1 = x_1^2/20; \\
+e_1 = 0.80; \\
+c_2 = 1.5*x_2; \\
+e_2 = 1-0.005*x_2; \\
+x_1 + x_2 = 100; \\
+0.80 = e_1*(x_1/100) + e_2*(x_2/100); \\
 ```
+The cost of treatment 1 is given to us (eq. 1). The efficiency of the first Treatment
+plant is constant (eq. 2). The cost of treatment 2 is given to us (eq. 3). The efficiency
+of plant 2 is exponentially dependent on volume treated (eq. 4). $x_1$ and $x_2$ must
+sum to $100 m^3/day$ because that is the total flow rate out of Cheap Plastic Products, Inc (eq. 5).
+$e_1$ and $e_2$ must average to 0.80 to meet the standard of a maximum of $20 kg/day$ of YUK
+discharge into Pristine Brook (eq. 6). 
 
 ## Problem 1.3
 ```julia
@@ -55,7 +62,7 @@ function model_system(Q, c_0, x_1, x_2, e_1)
 	# Q = flow of contaminated effluent [m^3/day]
 	# c_0 = initial concentration of YUK [kg/m^3]
 	# x_1 and x_2 = flow to each treatment plant [m^3/day]
-	# e_1 = const 0.80 [-]
+	# e_1 = efficiency of treatment plant 1, const 0.80 [-]
 	# find flow of contaminant in kg/day
 	contam = Q * c_0
 	# find plant 2 efficiency
@@ -67,7 +74,7 @@ function model_system(Q, c_0, x_1, x_2, e_1)
 	# total efficiency 
 	e_f = e_1*(x_1/Q) + e_2*(x_2/Q)
 	# remaining YUK
-	c_f = e_f*contam
+	c_f = (1 - e_f)*contam
 	# final cost
 	cost_f = c_1 + c_2
 	return c_f, cost_f
@@ -78,17 +85,28 @@ end
 ```julia
 x_1 = [0 5 10 20 30 40 50 75 90 100]
 x_2 = [100 95 90 80 70 60 50 25 10 0]
-data = zeros(10)
+data = zeros(10, 2)
 for i in 1:10
-	data[i] = model_system(100, 1, x_1[i], x_2[i], 0.80)
+	tupl = model_system(100, 1, x_1[i], x_2[i], 0.80)
+	data[i, 1] = tupl[1]
+	data[i, 2] = tupl[2]
 end
-scatter(data)
+scatter(data[:, 1], data[:, 2], title = "Cost vs. Final Concentration of YUK");
+xlabel!("Concentration [kg/day]");
+ylabel!("Cost [USD]")
 ```
 
 ## Problem 1.5
+The primary selection criteria is that the treatment meets the standard of <20kg/day of YUK
+to protect the public from negative side effects or additional costs due to increased treatment 
+of drinking water. This will also appease regulatory agencies. Within the combinations that meet 
+that standard, I would then prioritize cost, as a cheaper treatment plan is more likely to 
+be acted upon by the company. The cheapest solution that meets the standard results in 82% 
+average efficiency, meaning a concentration of 18.1 kg/day, and a cost of 318.75 USD/day.
 
 ## Problem 1.6
-
-## Problem 1.7
+We assume that flow rate and concentration of YUK from Cheap Plastic Products, Inc. is constant. 
+This may not be true, and may need to be considered to ensure that the effluent always meets the
+health standards.
 
 # References
