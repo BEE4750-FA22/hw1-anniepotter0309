@@ -94,17 +94,17 @@ end
 x_1 = range(0, 100, length=21)
 x_2 = range(100, 0, length=21)
 data = zeros(100, 2)
-count = 0
+num = 0
 for i in 1:21
 	for j in i:21
-		count = count + 1
+		num = num + 1
 		tupl = model_system(100, 1, x_1[i], x_2[j], 0.80)
-		data[count, 1] = tupl[1]
-		data[count, 2] = tupl[2]
+		data[num, 1] = tupl[1]
+		data[num, 2] = tupl[2]
 	end
 end
 
-scatter(data[1:count, 1], data[1:count, 2], title = "Cost vs. Final Concentration of YUK");
+scatter(data[1:num, 1], data[1:num, 2], title = "Cost vs. Final Concentration of YUK");
 xlabel!("Concentration [kg/day]");
 ylabel!("Cost [USD]")
 ```
