@@ -93,14 +93,17 @@ end
 ```julia
 x_1 = range(0, 100, length=21)
 x_2 = range(100, 0, length=21)
-data = zeros(100, 2)
-num = 0
+data = zeros(1000, 2)
+global num = 0
 for i in 1:21
 	for j in i:21
-		num = num + 1
+		global num = num + 1
 		tupl = model_system(100, 1, x_1[i], x_2[j], 0.80)
 		data[num, 1] = tupl[1]
 		data[num, 2] = tupl[2]
+		if tupl[1] < 20
+			println(tupl)
+		end
 	end
 end
 
@@ -115,7 +118,7 @@ to protect the public from negative side effects or additional costs due to incr
 of drinking water. This will also appease regulatory agencies. Within the combinations that meet 
 that standard, I would then prioritize cost, as a cheaper treatment plan is more likely to 
 be acted upon by the company. The cheapest solution that meets the standard results in 82% 
-average efficiency, meaning a concentration of 18.1 kg/day, and a cost of 318.75 USD/day.
+average efficiency, meaning a concentration of 19.999 kg/day, and a cost of 240 USD/day.
 
 ## Problem 1.6
 We assume that flow rate and concentration of YUK from Cheap Plastic Products, Inc. is constant. 
