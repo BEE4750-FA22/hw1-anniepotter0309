@@ -90,6 +90,8 @@ for i in 1:21
 		data[num, 2] = tupl[2]
 		if tupl[1] < 20
 			println(tupl)
+			println(x_1[i])
+			println(x_2[j])
 		end
 	end
 end
@@ -105,7 +107,8 @@ to protect the public from negative side effects or additional costs due to incr
 of drinking water. This will also appease regulatory agencies. Within the combinations that meet 
 that standard, I would then prioritize cost, as a cheaper treatment plan is more likely to 
 be acted upon by the company. The cheapest solution that meets the standard results in 82% 
-average efficiency, meaning a concentration of 19.999 kg/day, and a cost of 240 USD/day.
+average efficiency, meaning a concentration of 19.999 kg/day, and a cost of 240 USD/day. In this
+scenario 60% of the effluent is sent to treatment 1 and 40% is sent to treatment 2.
 
 ## Problem 1.6
 We assume that flow rate and concentration of YUK from Cheap Plastic Products, Inc. is constant. 
