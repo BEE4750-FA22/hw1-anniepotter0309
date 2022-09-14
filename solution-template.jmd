@@ -26,6 +26,8 @@ Pkg.instantiate()
 ```julia
 using GraphRecipes, Plots
 ```
+![img](hw1-bee4750.png)
+
 
 
 
