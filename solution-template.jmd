@@ -118,3 +118,5 @@ This may not be true, and may need to be considered to ensure that the effluent 
 health standards.
 
 # References
+https://docs.julialang.org/en/v1/manual/variables-and-scoping/ <!-- global variable -->
+https://docs.juliaplots.org/latest/tutorial/ <!-- labeling axes -->
